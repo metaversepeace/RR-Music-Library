@@ -9,22 +9,22 @@ function App() {
   let [message, setMessage] = useState('Search for Music!')
 
   useEffect(() => {
-    if (searchTerm) {
-      document.title=`${searchTerm} Music`
-      const fetchData = async () => {
-        const response = await fetch(`https://itunes.apple.com/search?term=${searchTerm}`)
-        const resData = await response.json()
-        if(resData.results.length > 0) {
-          setData(resData.results)
-        } else {
-          setMessage('Not Found')
+      if (searchTerm) {
+        document.title=`${searchTerm} Music`
+        const fetchData = async () => {
+          const response = await fetch(`https://itunes.apple.com/search?term=${searchTerm}`)
+          const resData = await response.json()
+          if(resData.results.length > 0) {
+            setData(resData.results)
+          } else {
+            setMessage('Not Found')
+          }
         }
-      }
-      fetchData()
-  }
+        fetchData()
+    }
   }, [searchTerm])
 
-  const handleSearch = (e: { preventDefault: () => void; }, term: SetStateAction<string>) => {
+  const handleSearch = (e: any, term: string) => {
     e.preventDefault()
     setSearchTerm(term)
   }

@@ -1,6 +1,10 @@
 import { useState } from 'react'
 
-function GalleryItem(props){
+interface GalleryItem {
+    handleSearch: any;
+}
+
+const GalleryItem = (props: any) => {
     let [view, setView] = useState(false)
 
     const simpleView = () => {
